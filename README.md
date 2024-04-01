@@ -1,4 +1,4 @@
-SIMULATION AND IMPLEMENTATION OF  COMBINATIONAL LOGIC CIRCUITS
+![image](https://github.com/Gokul5310/VLSI-LAB-EXP-2/assets/116006381/41aafd98-525e-4b07-80e0-dbd2dab11bbd)![image](https://github.com/Gokul5310/VLSI-LAB-EXP-2/assets/116006381/1dbf9b5b-7ae2-4b20-a096-25bf03ec9de5)SIMULATION AND IMPLEMENTATION OF  COMBINATIONAL LOGIC CIRCUITS
 
 AIM: 
  To simulate and synthesis ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR using Xilinx ISE.
@@ -48,13 +48,98 @@ STEP:9  In the Design Object List Window, enter the pin location for each pin in
 STEP:10 Double click on the Implement Design and double click on the Generate Programming File to create a bitstream of the design.(.v) file is converted into .bit file here.
 STEP:11  On the board, by giving required input, the LEDs starts to glow light, indicating the output.
 
-VERILOG CODE
-
-   <<< TYPE YOUR VERILOG CODE >>>
-
+# VERILOG CODE
+# Encoder
+```
+module encoder(d,a,b,c) ;
+input [7:0]d;
+output a,b,c;
+or(a,d[4],d[5],d[6],d[7]);
+or(b,d[2],d[3],d[6],d[7]);
+or(c,d[1],d[3],d[5],d[7]);
+endmodule
+```
+ # DECODER
+ ```
+module decoder_8(a,b,c,y);
+input a,b,c; 
+output[7:0]y; 
+and gl(y[0],(~a),(~b),(~c)); 
+and g2(y[1],(~a),(~b),(c)); 
+and g3(y[2],(~a),(b),(~c));
+and g4(y[3],(~a),(b),(c));
+and g5(y[4],(a),(~b),(~c));
+and g6(y[5],(a), (~b), (c));
+and g7(y[6], (a), (b), (~c)); 
+and g8(y[7], (a), (b), (c));
+endmodule
+```
+# MULTIPLEXER
+```
+module mux(a,b,c,d,s0,s1,y);
+input a,b,c,d,s0,s1;
+output y;
+assign y=s1 ?(s0?d:c):(s0?b:a);
+endmodule
+```
+# DEMULTIPLEXER
+```
+module demux(in,s0,s1,s2,d0,d1,d2,d3,d4,d5,d6,d7);
+input in,s0,s1,s2;
+output d0,d1,d2,d3,d4,d5,d6,d7;
+assign d0=(in & ~s2 & ~s1 &~s0),
+d1=(in & ~s2 & ~s1 &s0),
+d2=(in & ~s2 & s1 &~s0),
+d3=(in & ~s2 & s1 &s0),
+d4=(in & s2 & ~s1 &~s0),
+d5=(in & s2 & ~s1 &s0),
+d6=(in & s2 & s1 &~s0),
+d7=(in & s2 & s1 &s0);
+endmodule
+```
+# MAGNITUDE COMPARATOR
+```
+module magcomp(a,b,l,g,e);
+input [3:0]a,b;
+output reg l,g,e;
+always @(*)
+begin
+if(a>b)
+begin
+     l=1'b0;
+     g=1'b1;
+     e=1'b0;
+end
+else if(a<b)
+begin
+     l=1'b1;
+     g=1'b0;
+     e=1'b0;
+end
+else
+begin
+     l=1'b0;
+     g=1'b0;
+     e=1'b1;
+end
+end
+endmodule
+```
 OUTPUT WAVEFORM
- <<< PASTE YOUR OUTPUT WAVEFORM >>>
+ # Encoder
+ ![image](https://github.com/Gokul5310/VLSI-LAB-EXP-2/assets/116006381/30d26ed7-f390-4cea-9616-777ef367a412)
+ # Decoder
+ ![image](https://github.com/Gokul5310/VLSI-LAB-EXP-2/assets/116006381/05f396cc-9c4d-435d-9421-d4b1d0b4dafe)
+ # Multiplexer 
+ ![image](https://github.com/Gokul5310/VLSI-LAB-EXP-2/assets/116006381/9d8f6ffe-1bb3-4d4f-bc7b-1fe6f27cd35b)
+ # Demultiplexer 
+ ![dm](https://github.com/Gokul5310/VLSI-LAB-EXP-2/assets/116006381/eff58cc4-a541-46b5-a564-3bf1d3fd9d58)
+ # Magnitude comparator 
+ ![image](https://github.com/Gokul5310/VLSI-LAB-EXP-2/assets/116006381/99997ab3-6359-4fc0-974b-03de16a1de0a)
 
-RESULT
+
+# RESULT
+ Hence ENCODER, DECODER, MULTIPLEXER, DEMULTIPLEXER, MAGNITUDE COMPARATOR is simulated and synthesised using Xilinx ISE.
+
 
 
