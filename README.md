@@ -33,7 +33,7 @@ MAGNITUDE COMPARATOR
 
 
   
-PROCEDURE:
+# PROCEDURE:
 STEP:1  Start  the Xilinx navigator, Select and Name the New project.
 STEP:2  Select the device family, device, package and speed.       
 STEP:3  Select new source in the New Project and select Verilog Module as the Source type.                       
@@ -123,7 +123,7 @@ end
 end
 endmodule
 ```
-OUTPUT WAVEFORM
+# OUTPUT WAVEFORM
  # Encoder
  ![image](https://github.com/Gokul5310/VLSI-LAB-EXP-2/assets/116006381/30d26ed7-f390-4cea-9616-777ef367a412)
  # Decoder
